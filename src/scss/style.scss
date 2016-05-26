@@ -37,6 +37,7 @@ hr {
 .box {
   display: flex;
   flex-direction: column;
+  margin: 35px;
 }
 
 .box-title {
@@ -60,7 +61,13 @@ hr {
   box-sizing: border-box;
 }
 
-
+.weapons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 
 
 .uk-container {
