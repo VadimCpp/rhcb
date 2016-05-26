@@ -1,5 +1,10 @@
+var del = require('del');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var htmlmin = require('gulp-htmlmin');
+var imagemin = require('gulp-imagemin');
+var inline = require('gulp-inline-source');
+var pngquant = require('imagemin-pngquant');
 var spritesmith = require('gulp.spritesmith');
 
 gulp.task('copy-html', function() {
@@ -7,10 +12,22 @@ gulp.task('copy-html', function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('copy-htaccess', function() {
+  return gulp.src('src/.htaccess')
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('copy-background', function() {
   return gulp.src('src/img/background.jpg')
-    .pipe(gulp.dest('dist/img'));
+    .pipe(gulp.dest('dist'));
 });
+
+gulp.task('copy-favicon', function() {
+  return gulp.src('src/favicon.ico')
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('copy', [ 'copy-html', 'copy-htaccess', 'copy-background', 'copy-favicon' ]);
 
 gulp.task('compile-sass', function() {
   return gulp.src('src/scss/**/*.scss')
@@ -26,10 +43,41 @@ gulp.task('sprite', function() {
         cssName: 'sprite.css'
       }));
 
-  spriteData.img.pipe(gulp.dest('./dist/css/'));
+  spriteData.img.pipe(gulp.dest('./dist/'));
   spriteData.css.pipe(gulp.dest('./dist/css/'));
 });
 
-gulp.task('build', [ 'copy-html', 'copy-background', 'compile-sass' ]);
+gulp.task('inline-css', function () {
+    return gulp.src('dist/index.html')
+        .pipe(inline())
+        .pipe(gulp.dest('dist'));
+});
 
-gulp.task('default', [ 'build' ]);
+gulp.task('minify-sprite', function() {
+    return gulp.src(['dist/sprite.png'])
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('del', function () {
+    return del([
+        'dist/**/*',
+        'dist/.htaccess'
+    ]);
+});
+
+gulp.task('del-css', function () {
+    return del([
+        'dist/css'
+    ]);
+});
+
+gulp.task('minify-html', function() {
+    return gulp.src('dist/index.html')
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('dist'))
+});
