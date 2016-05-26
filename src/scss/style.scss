@@ -1,0 +1,25 @@
+
+html {
+  /* 1 */
+  font: normal 14px / 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  /* 3 */
+  background: #ffffff;
+  color: #444444;
+}
+
+body {
+  margin: 0;
+}
+
+hr {
+  /* 1 */
+  box-sizing: content-box;
+  height: 0;
+  /* 2 */
+  margin: 15px 0;
+  border: 0;
+  border-top: 1px solid #dddddd;
+}
