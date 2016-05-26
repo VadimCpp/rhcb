@@ -7,6 +7,11 @@ gulp.task('copy-html', function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('copy-background', function() {
+  return gulp.src('src/img/background.jpg')
+    .pipe(gulp.dest('dist/img'));
+});
+
 gulp.task('compile-sass', function() {
   return gulp.src('src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -18,13 +23,13 @@ gulp.task('sprite', function() {
     gulp.src('./src/img/materials/*.png')
       .pipe(spritesmith({
         imgName: 'sprite.png',
-        cssName: 'sprite.css',
+        cssName: 'sprite.css'
       }));
 
   spriteData.img.pipe(gulp.dest('./dist/css/'));
   spriteData.css.pipe(gulp.dest('./dist/css/'));
 });
 
-gulp.task('build', [ 'copy-html', 'compile-sass' ]);
+gulp.task('build', [ 'copy-html', 'copy-background', 'compile-sass' ]);
 
 gulp.task('default', [ 'build' ]);
