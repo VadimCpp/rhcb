@@ -23,3 +23,55 @@ hr {
   border: 0;
   border-top: 1px solid #dddddd;
 }
+
+.cell {
+  display:inline-block;
+  height:62px;
+  width:62px;
+  border:1px solid rgba(0,0,0,.3);
+}
+
+.recipe-box {
+  width: 192px;
+  height: 192px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: center;
+  border:1px solid rgba(0,0,0,.7);
+}
+
+
+
+
+.uk-container {
+  box-sizing: border-box;
+  max-width: 980px;
+  padding: 0 25px;
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+  .uk-container {
+    max-width: 1200px;
+    padding: 0 35px;
+  }
+}
+/*
+ * Micro clearfix
+ */
+.uk-container:before,
+.uk-container:after {
+  content: "";
+  display: table;
+}
+.uk-container:after {
+  clear: both;
+}
+/*
+ * Center container
+ */
+.uk-container-center {
+  margin-left: auto;
+  margin-right: auto;
+}
