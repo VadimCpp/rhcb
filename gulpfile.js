@@ -21,8 +21,8 @@ gulp.task('sprite', function() {
         cssName: 'sprite.css',
       }));
 
-  spriteData.img.pipe(gulp.dest('./dist/img/')); // путь, куда сохраняем картинку
-  spriteData.css.pipe(gulp.dest('./dist/css/')); // путь, куда сохраняем стили
+  spriteData.img.pipe(gulp.dest('./dist/css/'));
+  spriteData.css.pipe(gulp.dest('./dist/css/'));
 });
 
 gulp.task('build', [ 'copy-html', 'compile-sass' ]);
