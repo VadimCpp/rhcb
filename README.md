@@ -5,5 +5,4 @@
 # Description
 Single web page without js.
 # Website links
-Official : [theelitegames.net](http://theelitegames.net) <br>
-Test : [http://www.royalheroescookbook.biletvit.ru/](http://www.royalheroescookbook.biletvit.ru/)
+Official : [theelitegames.net](http://theelitegames.net)
