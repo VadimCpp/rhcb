@@ -96,6 +96,15 @@ gulp.task('watch', function() {
     gulp.watch('src/scss/**/*', ['build']);
 });
 
+gulp.task('gh-pages', function(done) {
+  var ghpages = require('gh-pages');
+
+  ghpages.publish('dist', function(err) {
+    if (err) return done(err);
+    done();
+  });
+});
+
 gulp.task('build', ['del', 'copy', 'sprite', 'compile-sass', 'inline-css']);
 
 gulp.task('default', ['build', 'browserSync', 'watch']);
