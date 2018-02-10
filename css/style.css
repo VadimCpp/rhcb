@@ -1,0 +1,99 @@
+html {
+  /* 1 */
+  font: normal 14px / 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  /* 3 */
+  background: #ffffff;
+  color: #444444;
+  /* 4 */
+  background: url(background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+body {
+  margin: 0; }
+
+hr {
+  /* 1 */
+  box-sizing: content-box;
+  height: 0;
+  /* 2 */
+  margin: 15px 0;
+  border: 0;
+  border-top: 1px solid #444444; }
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box; }
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin: 35px; }
+
+.box-title {
+  width: 212px;
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+.box-recipe {
+  width: 212px;
+  height: 212px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  box-sizing: border-box; }
+
+.weapons, .armor, .accessories {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; }
+
+.container {
+  background: rgba(255, 255, 255, 0.9); }
+
+.uk-container {
+  box-sizing: border-box;
+  max-width: 980px;
+  padding: 0 25px; }
+
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+  .uk-container {
+    max-width: 1200px;
+    padding: 0 35px; } }
+
+/*
+ * Micro clearfix
+ */
+.uk-container:before,
+.uk-container:after {
+  content: "";
+  display: table; }
+
+.uk-container:after {
+  clear: both; }
+
+/*
+ * Center container
+ */
+.uk-container-center {
+  margin-left: auto;
+  margin-right: auto; }
