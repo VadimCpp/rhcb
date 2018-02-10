@@ -6,6 +6,15 @@ var imagemin = require('gulp-imagemin');
 var inline = require('gulp-inline-source');
 var pngquant = require('imagemin-pngquant');
 var spritesmith = require('gulp.spritesmith');
+var browserSync = require('browser-sync').create();
+
+gulp.task('browserSync', function() {
+  browserSync.init({
+    server: {
+      baseDir: './dist'
+    }
+  })
+});
 
 gulp.task('copy-html', function() {
   return gulp.src('src/index.html')
@@ -47,7 +56,7 @@ gulp.task('sprite', function() {
   spriteData.css.pipe(gulp.dest('./dist/css/'));
 });
 
-gulp.task('inline-css', function () {
+gulp.task('inline-css', function() {
     return gulp.src('dist/index.html')
         .pipe(inline())
         .pipe(gulp.dest('dist'));
@@ -63,14 +72,14 @@ gulp.task('minify-sprite', function() {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('del', function () {
+gulp.task('del', function() {
     return del([
         'dist/**/*',
         'dist/.htaccess'
     ]);
 });
 
-gulp.task('del-css', function () {
+gulp.task('del-css', function() {
     return del([
         'dist/css'
     ]);
@@ -81,3 +90,12 @@ gulp.task('minify-html', function() {
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('dist'))
 });
+
+gulp.task('watch', function() {
+    gulp.watch('src/index.html', ['build']);
+    gulp.watch('src/scss/**/*', ['build']);
+});
+
+gulp.task('build', ['del', 'copy', 'sprite', 'compile-sass', 'inline-css']);
+
+gulp.task('default', ['build', 'browserSync', 'watch']);
