@@ -11,7 +11,7 @@ Single web page without js.
 To set up dev env:
 
 ```bash
-
+after npm updated
 # Clone the repo
 git clone https://github.com/VadimCpp/rhcb.git rhcb
 
